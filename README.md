@@ -1,117 +1,101 @@
-📊 Stock Market Intelligence Dashboard
-A Real-Time BI Project Using Python, PostgreSQL & Power BI
+# 📈 Stock Market Intelligence Dashboard  
+*A Real-Time BI Project Using Python, PostgreSQL & Power BI*
 
-Python · PostgreSQL · Power BI · License
+![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
+![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue)
+![Power BI](https://img.shields.io/badge/Power--BI-Dashboard-yellow)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-🚀 Overview
-This project demonstrates a real-time Business Intelligence pipeline for the stock market. It fetches live or recent stock price data using a Python ETL script, loads and manages the data with PostgreSQL, and presents insights using Power BI. The pipeline is fully automatable via Task Scheduler.
+---
 
-🧰 Tech Stack
-Tool	Purpose
-Python	ETL Script (requests, pandas)
-PostgreSQL	Data Storage
-Power BI	Dashboard Visualizations
-Task Scheduler	Automation
+## 🚀 Overview
 
-📂 Folder Structure
-bash
-Copy
-stock-market-intelligence/
-├── config/                  # .env file (API + DB settings)
-├── scripts/                 # ETL script(s) (e.g., pipeline.py)
-├── powerbi/                 # Power BI dashboard (.pbix)
-├── etl_logs/                # Auto-generated logs
-├── run_etl.bat              # Batch script for automation
-├── requirements.txt         # Python dependencies
+This project showcases a real-time Business Intelligence pipeline for the **stock market**. It uses a stock market API (e.g., Yahoo Finance) to pull live data, a **Python ETL script** to process it, stores the results in a **PostgreSQL** database, and visualizes them using **Power BI**.
+
+---
+
+## 🧰 Tech Stack
+
+| Tool           | Purpose                              |
+|----------------|--------------------------------------|
+| Python         | ETL Script (`requests`, `pandas`)    |
+| PostgreSQL     | Data Storage                         |
+| Power BI       | Dashboard Visualizations             |
+| Task Scheduler | Automation                           |
+
+---
+
+## 📂 Folder Structure
+
+ETLProject/
+├── config/ # .env file (API + DB settings)
+├── scripts/ # ETL script(s)
+├── powerbi/ # Power BI dashboard (.pbix)
+├── etl_logs/ # Auto-generated logs
+├── run_etl.bat # Batch script for automation
+├── requirements.txt # Python dependencies
 ├── .gitignore
 ├── README.md
 └── LICENSE
-⚙️ ETL Process
-Extract stock data using an API (e.g., Alpha Vantage, Yahoo Finance).
 
-Transform data with pandas (select fields, clean data, compute new metrics).
-
-Load into a PostgreSQL table called stock_listings_latest.
-
-Example:
-
-python
+sql
 Copy
-response = requests.get(api_url, params=params)
-data = response.json()
-# Transform, connect to DB, insert rows...
-See full code: scripts/pipeline.py
 
-📊 Power BI Dashboard Highlights
-Visualizations Include:
+---
 
-📈 Line chart: Open vs. Close prices over time
+## ⚙️ ETL Process
 
-🔝 Bar chart: Top performing stocks (e.g., by percent change)
+1. **Extract** live stock market data from Yahoo Finance API (or similar)
+2. **Transform** it using pandas (clean, select, calculate % change, etc.)
+3. **Load** it into a PostgreSQL table called `stock_listings_latest`
 
-🍩 Donut chart: Portfolio/stock distribution by market value or percent
 
-💡 KPI Cards: Total volume, best/worst performers, averages
+2. Create `.env` in `config/`:
+   ```env
+   CMC_API_KEY=your_api_key
+   DB_NAME=crypto
+   DB_USER=postgres
+   DB_PASS=your_password
+   DB_HOST=localhost
+   ```
 
-📋 Conditional table: Price changes & percent changes
+# transform, connect to DB, insert rows...
+```
+✅ See full code: scripts/pipeline.py
+---
 
-➕ Green = Gain, ➖ Red = Loss
+## 📊 Power BI Dashboard Highlights
+**Visualizations Include:**
 
-📈 Key Insights
-See which stocks drive most of your portfolio’s performance
+📈 Line/Bar chart: Stock Open vs Close values
 
-Track daily, weekly, or monthly volatility
+🧁 Donut chart: Portfolio allocation by stock
 
-Identify correlations between price, volume, and market movements
+💡 KPI Cards: Total Volume, Highest % Change, Top Performer
 
-⚡ Setup & Usage
-1. Clone the repo:
+📋 Conditional table: Price & % changes
+➕ Green = Gain, ➖ Red = Loss, ⚪ Gray = No change
+---
+## 📈 Key Insights
+Instantly spot daily gainers and losers across tracked stocks
 
-sh
-Copy
-git clone https://github.com/Abdulmohimen/ETLProject.git
-cd ETLProject
-2. Create your .env in /config:
+Analyze portfolio distribution and exposure
 
-ini
-Copy
-API_KEY=your_stock_api_key
-DB_NAME=stockdb
-DB_USER=postgres
-DB_PASS=your_password
-DB_HOST=localhost
-3. Install dependencies:
+Track trading volumes alongside price trends
+---
+## 🔁 Automation
+Task Scheduler is used to run run_etl.bat daily.
 
-sh
-Copy
-pip install -r requirements.txt
-4. Run the ETL:
+Logs saved to /etl_logs/etl_log.txt.
 
-sh
-Copy
-python scripts/pipeline.py
-5. Or automate it with:
+## 📈 Future Enhancements
+🔮 Add ML-based trend prediction (e.g., stock price forecasting)
 
-sh
-Copy
-run_etl.bat
-🔁 Automation
-Task Scheduler runs run_etl.bat on a schedule (e.g., daily)
+☁️ Host the dashboard on Power BI Cloud
 
-Logs saved to /etl_logs/etl_log.txt
+📬 Add Telegram/email alerts on major stock movements
 
-📈 Future Enhancements
-📉 ML-based stock trend forecasting
-
-☁️ Host dashboard on Power BI Service
-
-📬 Email/Telegram alerts on major market changes
-
-🧑‍💻 Author
+## 🧑‍💻 Author
 Abdulmohimen Elosta
 EU Business School — Master's in Business Analytics & Data Science
-GitHub Project Link
-
-📄 License
-MIT — use freely, credit appreciated.
-
+📬 LinkedIn
